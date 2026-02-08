@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>图片字幕生成器</title>
+  <link rel="stylesheet" href="styles.css?v=20260209">
+</head>
+<body>
+  <div class="container">
+    <h1>图片字幕生成器</h1>
+    <div class="grid">
+      <section class="card settings">
+        <div class="settingsPane">
+        <div class="field">
+          <label>选择图片</label>
+          <input id="fileInput" type="file" accept="image/png,image/jpeg">
+          <div id="fileInfo" class="hint"></div>
+        </div>
+        <div class="inline">
+          <div class="field">
+            <label>字幕高度(px)</label>
+            <input id="rowHeight" type="number" min="24" max="120" value="40">
+          </div>
+          <div class="field">
+            <label>字体大小(px)</label>
+            <input id="fontSize" type="number" min="12" max="72" value="20">
+          </div>
+        </div>
+        <div class="inline">
+          <div class="field">
+            <label>字体样式</label>
+            <select id="fontStyle">
+              <option value="normal" selected>正常</option>
+              <option value="italic">斜体</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>字体粗细</label>
+            <select id="fontWeight">
+              <option value="300">300</option>
+              <option value="400" selected>400</option>
+              <option value="500">500</option>
+              <option value="600">600</option>
+              <option value="700">700</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>字体家族</label>
+          <select id="fontFamily">
+            <option value="sans-serif" selected>sans-serif</option>
+            <option value="Arial">Arial</option>
+            <option value="Helvetica">Helvetica</option>
+            <option value="Microsoft YaHei">Microsoft YaHei</option>
+            <option value="PingFang SC">PingFang SC</option>
+            <option value="Noto Sans SC">Noto Sans SC</option>
+            <option value="Noto Serif SC">Noto Serif SC</option>
+            <option value="Hiragino Sans GB">Hiragino Sans GB</option>
+            <option value="Songti SC">Songti SC</option>
+            <option value="Heiti SC">Heiti SC</option>
+            <option value="SimSun">SimSun</option>
+            <option value="SimHei">SimHei</option>
+            <option value="KaiTi">KaiTi</option>
+            <option value="FangSong">FangSong</option>
+            <option value="STSong">STSong</option>
+            <option value="STKaiti">STKaiti</option>
+            <option value="HarmonyOS Sans SC">HarmonyOS Sans SC</option>
+            <option value="MiSans">MiSans</option>
+            <option value="OPPOSans">OPPOSans</option>
+            <option value="Alibaba PuHuiTi">Alibaba PuHuiTi</option>
+            <option value="serif">serif</option>
+            <option value="monospace">monospace</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>字体颜色</label>
+          <input id="fillColor" type="color" value="#FFFFFF">
+        </div>
+        <div class="field">
+          <label>轮廓颜色</label>
+          <input id="strokeColor" type="color" value="#000000">
+        </div>
+        <div class="field">
+          <label>字幕文本（多行）</label>
+          <textarea id="textInput" rows="8" placeholder="每行一条字幕，最多20行"></textarea>
+          <div class="hint">行数：<span id="lineCount">0</span></div>
+        </div>
+        <div class="actions">
+          <button id="generateBtn" class="primary" disabled>生成字幕图</button>
+          <button id="saveBtn" disabled>保存图片</button>
+        </div>
+        <div id="errorBox" class="error" hidden></div>
+        </div>
+      </section>
+      <section class="card">
+        <div class="previewHeader">预览</div>
+        <div class="previewWrap">
+          <canvas id="previewCanvas"></canvas>
+        </div>
+      </section>
+    </div>
+    <footer class="footer">
+      <div class="badgeWrap">
+        <span class="badge">
+          <span class="label">hits</span>
+          <span class="value" id="genCountTotal">0</span>
+        </span>
+      </div>
+    </footer>
+  </div>
+  <script src="app.js?v=20260209"></script>
+</body>
+</html>
